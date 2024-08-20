@@ -1,0 +1,248 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+@font-face {
+  font-family: "SatoshiRegular";
+  src: url("./Satoshi-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PoppinsSemiBold";
+  src: url("./Poppins-SemiBold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --heading-font: "PoppinsSemiBold", sans-serif;
+  --primary-font: "SatoshiRegular", sans-serif;
+}
+
+body {
+  display: grid;
+
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 3fr;
+}
+
+#sideBar {
+  background-color: rgb(230, 230, 230);
+  height: 100vh;
+  padding: 15px;
+}
+
+#content {
+  background-color: rgb(27, 27, 27);
+  height: 100vh;
+}
+
+#sideBar > h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: rgb(27, 27, 27);
+}
+
+#sideBar > h1 {
+  font-family: var(--primary-font);
+  color: rgb(27, 27, 27);
+}
+
+#content > h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: rgb(230, 230, 230);
+}
+
+#content > h1 {
+  font-family: var(--primary-font);
+  color: rgb(230, 230, 230);
+}
+
+#sideBarHeader {
+  margin-bottom: 15%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+#sideBarHeader > h1 {
+  font-family: var(--heading-font);
+  color: rgb(27, 27, 27);
+}
+
+#addProject {
+  fill: rgb(27, 27, 27);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+#addProject:hover {
+  fill: rgb(230, 230, 230);
+  background-color: rgb(27, 27, 27);
+}
+
+#addProjectFormContainer {
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgb(27, 27, 27);
+}
+
+#addProjectFormContainer > form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#addProjectFormContainer > form > input,
+#addProjectFormContainer > form > textarea {
+  margin-bottom: 10px;
+}
+
+#addProjectFormContainer > form > .inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#addProjectFormContainer > form > .inputContainer > label {
+  font-family: var(--heading-font);
+  color: rgb(27, 27, 27);
+}
+
+#addProjectFormContainer > form > .inputContainer > #projectName {
+  font-family: var(--primary-font);
+  width: 40%;
+}
+
+#addProjectFormContainer > form > #projectDescriptionContainer {
+  margin-top: 30px;
+}
+
+#addProjectFormContainer > form > .inputContainer > #projectDescription {
+  font-family: var(--primary-font);
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+#addProjectFormContainer > form > button {
+  margin-left: auto;
+  margin-top: 15px;
+
+  width: 45%;
+  height: 45px;
+  padding: 0;
+  font-family: var(--primary-font);
+  background-color: rgb(27, 27, 27);
+  color: rgb(230, 230, 230);
+  border: none;
+
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.project {
+  margin: 50px 0px;
+  padding: 5px;
+  background-color: rgb(27, 27, 27);
+}
+
+.projectTitle {
+  color: rgb(230, 230, 230);
+}
+
+.project > p {
+  color: rgb(230, 230, 230);
+  font-family: var(--primary-font);
+}
+
+/* .priority {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.priority.priorityHigh {
+  background-color: rgb(255, 122, 122);
+}
+
+.priority.priorityMedium {
+  background-color: rgb(255, 202, 96);
+}
+
+.priority.priorityLow {
+  background-color: rgb(119, 255, 119);
+} */

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <div id="sideBar">
+      <div id="sideBarHeader">
+        <h1>Projects</h1>
+        <svg
+          id="addProject"
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+        </svg>
+      </div>
+
+      <div id="addProjectFormContainer" class="hidden">
+        <form>
+          <div class="inputContainer">
+            <label for="projectName">Project Name</label>
+            <input
+              name="projectName"
+              id="projectName"
+              type="text"
+              placeholder="Project Name"
+            />
+          </div>
+          <div class="inputContainer" id="projectDescriptionContainer">
+            <label for="projectDescription">Project Description</label>
+            <textarea
+              name="projectDescription"
+              id="projectDescription"
+              placeholder="Project Description"
+            ></textarea>
+          </div>
+          <button type="submit">Add Project</button>
+        </form>
+      </div>
+
+      <div class="project" id="project1">
+        <h3 class="projectTitle">Project 1</h3>
+
+        <p class="projectDescription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          ullamcorper, nisl in aliquam tincidunt, justo nisi aliquet nisi, sit.
+        </p>
+      </div>
+    </div>
+
+    <div id="content">
+      <input type="date" id="date" />
+    </div>
+  </body>
+</html>
