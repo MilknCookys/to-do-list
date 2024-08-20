@@ -37,6 +37,4 @@ class Project {
 const testProject = new Project("Project 1");
 testProject.addTask("Task 1", "Description 1", "2022-01-01", "High");
 
-console.log(testProject.tasks[0]);
-
 export { Project, projects };

@@ -22,7 +22,7 @@
       </div>
 
       <div id="addProjectFormContainer" class="hidden">
-        <form>
+        <form id="addProjectForm">
           <div class="inputContainer">
             <label for="projectName">Project Name</label>
             <input
@@ -30,6 +30,7 @@
               id="projectName"
               type="text"
               placeholder="Project Name"
+              required
             />
           </div>
           <div class="inputContainer" id="projectDescriptionContainer">
@@ -40,7 +41,7 @@
               placeholder="Project Description"
             ></textarea>
           </div>
-          <button type="submit">Add Project</button>
+          <button type="submit" id="createProject">Add Project</button>
         </form>
       </div>
 
