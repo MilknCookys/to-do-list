@@ -1,10 +1,32 @@
 import { Task } from "./task";
 
-const projects = [];
+let projects = [];
+
+function projectIDGenerator() {
+  const id = Math.floor(Math.random() * 1000);
+
+  console.log(id);
+
+  if (projects.length === 0) {
+    return id;
+  } else {
+    for (let i = 0; i < projects.length; i++) {
+      console.log("Hello?");
+      if (projects[i].id === id) {
+        console.log("ID already exists");
+        return projectIDGenerator();
+      } else {
+        console.log("ID is unique");
+        return id;
+      }
+    }
+  }
+}
 
 class Project {
   #name;
   #description;
+  #id;
   constructor(name, description) {
     if (typeof name !== "string" && name) {
       console.error(`Name must be a string: ${name}`);
@@ -16,6 +38,7 @@ class Project {
 
     this.#name = name;
     this.#description = description;
+    this.#id = projectIDGenerator();
     this.tasks = [];
     projects.push(this);
   }
@@ -28,13 +51,26 @@ class Project {
     this.#name = value;
   }
 
+  get description() {
+    return this.#description;
+  }
+
+  set description(value) {
+    this.#description = value;
+  }
+
+  get id() {
+    return this.#id;
+  }
+
+  set id(value) {
+    this.#id = value;
+  }
+
   addTask(title, description, dueDate, priority) {
-    const task = new Task(title, description, dueDate, priority);
+    const task = new Task(title, description, dueate, priority);
     this.tasks.push(task);
   }
 }
-
-const testProject = new Project("Project 1");
-testProject.addTask("Task 1", "Description 1", "2022-01-01", "High");
 
 export { Project, projects };

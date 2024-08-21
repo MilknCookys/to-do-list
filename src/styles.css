@@ -215,9 +215,14 @@ h6 {
 }
 
 .project {
+  min-height: 15%;
   margin: 50px 0px;
   padding: 5px;
   background-color: rgb(27, 27, 27);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .projectTitle {
@@ -227,6 +232,31 @@ h6 {
 .project > p {
   color: rgb(230, 230, 230);
   font-family: var(--primary-font);
+}
+
+.projectActions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.projectActions > svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.projectActions > svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.projectActions > .deleteProject:hover {
+  fill: rgb(255, 191, 191);
+}
+
+.projectActions > .viewProject:hover {
+  fill: rgb(191, 255, 191);
 }
 
 /* .priority {
