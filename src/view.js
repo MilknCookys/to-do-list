@@ -1,4 +1,5 @@
 import { deleteProject } from "./controller";
+import { displayProject } from "./controller";
 
 const deleteProject2 = deleteProject;
 
@@ -50,6 +51,7 @@ function displayProjectCard(project) {
   document.getElementById("sideBar").appendChild(projectCard);
 
   deleteProject.addEventListener("click", deleteProject2);
+  viewProject.addEventListener("click", displayProject);
 }
 
 export { displayProjectCard };

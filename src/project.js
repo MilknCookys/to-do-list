@@ -5,13 +5,10 @@ let projects = [];
 function projectIDGenerator() {
   const id = Math.floor(Math.random() * 1000);
 
-  console.log(id);
-
   if (projects.length === 0) {
     return id;
   } else {
     for (let i = 0; i < projects.length; i++) {
-      console.log("Hello?");
       if (projects[i].id === id) {
         console.log("ID already exists");
         return projectIDGenerator();

@@ -1,26 +1,24 @@
 import { toggleAddProjectForm } from "./forms";
 import { Project, projects } from "./project";
 import { displayProjectCard } from "./view";
+import { renderProjectView } from "./project-content";
 
 const addProjectFormButton = document.getElementById("addProject");
 addProjectFormButton.addEventListener("click", toggleAddProjectForm);
 
-const createProjectButton = document.getElementById("addProjectForm");
-// createProjectButton.addEventListener("submit", createProject);
-createProjectButton.addEventListener("submit", createProject);
+const projectForm = document.getElementById("addProjectForm");
+projectForm.addEventListener("submit", createProject);
 
 function createProject(event) {
-  const form = document.getElementById("addProjectForm");
-  if (form.checkValidity()) {
+  if (projectForm.checkValidity()) {
     event.preventDefault();
 
     const projectName = document.getElementById("projectName").value;
     const projectDescription =
       document.getElementById("projectDescription").value;
     const project = new Project(projectName, projectDescription);
-    projects.push(project);
     console.log(projects);
-    form.reset();
+    projectForm.reset();
 
     displayProjectCard(project);
   } else {
@@ -29,19 +27,39 @@ function createProject(event) {
 }
 
 function deleteProject(event) {
-  let project = event.target.parentElement.parentElement;
-
-  const projectID = project.getAttribute("project-id");
-
-  console.log(projectID);
-
   const element = event.target.parentElement.parentElement;
-
+  const elementProjectID = Number(element.getAttribute("project-id"));
   element.remove();
 
-  let projects2 = projects.filter((project) => project.id !== projectID);
-
-  console.log(projects2);
+  for (let i = 0; i < projects.length; i++) {
+    if (projects[i].id === elementProjectID) {
+      projects.splice(i, 1);
+    }
+  }
 }
 
-export { deleteProject };
+function displayProject(event) {
+  const id = Number(
+    event.target.parentElement.parentElement.getAttribute("project-id")
+  );
+
+  for (let i = 0; i < projects.length; i++) {
+    if (projects[i].id === id) {
+      renderProjectView(projects[i]);
+    }
+  }
+}
+
+function onStart() {
+  const defaultProject = new Project(
+    "Default Project",
+    "This is the default project."
+  );
+
+  displayProjectCard(defaultProject);
+  renderProjectView(defaultProject);
+}
+
+onStart();
+
+export { deleteProject, displayProject };
