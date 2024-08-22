@@ -16,8 +16,6 @@ function createSVGElement(svgContent, className) {
 }
 
 function displayProjectCard(project) {
-  console.log(project);
-
   const projectCard = document.createElement("div");
   projectCard.classList.add("project");
 

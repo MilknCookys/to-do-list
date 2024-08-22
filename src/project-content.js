@@ -1,3 +1,15 @@
+const displayedProject = (function () {
+  let displayedProject;
+  return {
+    getProject: function () {
+      return displayedProject;
+    },
+    setProject: function (project) {
+      displayedProject = project;
+    },
+  };
+})();
+
 function createSVGElement(svgContent, className) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(svgContent, "image/svg+xml");
@@ -11,6 +23,8 @@ function createSVGElement(svgContent, className) {
 }
 
 function renderProjectView(project) {
+  displayedProject.setProject(project);
+
   const content = document.getElementById("content");
 
   content.replaceChildren();
@@ -43,4 +57,12 @@ function renderProjectView(project) {
   content.appendChild(projectContainer);
 }
 
-export { renderProjectView };
+function clearRenderView(project) {
+  const content = document.getElementById("content");
+  if (displayedProject.getProject() === project) {
+    content.replaceChildren();
+    displayedProject.setProject(null);
+  }
+}
+
+export { renderProjectView, clearRenderView };

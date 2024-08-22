@@ -65,7 +65,7 @@ class Project {
   }
 
   addTask(title, description, dueDate, priority) {
-    const task = new Task(title, description, dueate, priority);
+    const task = new Task(title, description, dueDate, priority);
     this.tasks.push(task);
   }
 }
