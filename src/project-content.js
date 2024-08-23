@@ -1,3 +1,6 @@
+import { taskList } from "./task-list";
+import { addTaskForm } from "./forms";
+
 const displayedProject = (function () {
   let displayedProject;
   return {
@@ -10,13 +13,13 @@ const displayedProject = (function () {
   };
 })();
 
-function createSVGElement(svgContent, className) {
+function createSVGElement(svgContent, idName) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(svgContent, "image/svg+xml");
   const svgElement = doc.documentElement;
 
-  if (className) {
-    svgElement.classList.add(className);
+  if (idName) {
+    svgElement.id = idName;
   }
 
   return svgElement;
@@ -53,8 +56,11 @@ function renderProjectView(project) {
 
   projectHeader.appendChild(projectDetails);
   projectHeader.appendChild(addIcon);
-  projectContainer.appendChild(projectHeader);
+  content.appendChild(projectHeader);
   content.appendChild(projectContainer);
+
+  projectContainer.appendChild(taskList());
+  projectContainer.appendChild(addTaskForm());
 }
 
 function clearRenderView(project) {
