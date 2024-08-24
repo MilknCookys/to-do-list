@@ -1,14 +1,29 @@
-import { toggleAddProjectForm } from "./forms";
+import { toggleAddProjectForm, toggleAddTaskForm } from "./forms";
 import { Project, projects } from "./project";
 import { displayProjectCard } from "./view";
-import { renderProjectView } from "./project-content";
-import { clearRenderView } from "./project-content";
+import { renderProjectView, clearRenderView } from "./project-content";
+import { Task } from "./task";
+import { renderTaskItems } from "./task-list";
 
 const addProjectFormButton = document.getElementById("addProject");
 addProjectFormButton.addEventListener("click", toggleAddProjectForm);
 
 const projectForm = document.getElementById("addProjectForm");
 projectForm.addEventListener("submit", createProject);
+
+const currentProject = (function () {
+  let displayedProject;
+
+  function setProject(project) {
+    displayedProject = project;
+  }
+
+  function getProject() {
+    return displayedProject;
+  }
+
+  return { setProject, getProject };
+})();
 
 function createProject(event) {
   if (projectForm.checkValidity()) {
@@ -55,9 +70,44 @@ function displayProject(event) {
 
   for (let i = 0; i < projects.length; i++) {
     if (projects[i].id === elementProjectID) {
+      currentProject.setProject(projects[i]);
       renderProjectView(projects[i]);
+      renderTaskItems(projects[i]);
     }
   }
+}
+
+function displayTaskForm(event) {
+  toggleAddTaskForm();
+}
+
+function createTask(event) {
+  if (taskForm.checkValidity()) {
+    event.preventDefault();
+
+    const taskName = document.getElementById("taskName").value;
+    const taskNotes = document.getElementById("taskNotes").value;
+    const taskDeadline = document.getElementById("deadline").value;
+
+    console.log(document.querySelector("input[name='priority']:checked").value);
+
+    const taskPriority = document.querySelector(
+      "input[name='priority']:checked"
+    ).value;
+
+    const task = new Task(taskName, taskNotes, taskDeadline, taskPriority);
+    currentProject
+      .getProject()
+      .addTask(taskName, taskNotes, taskDeadline, taskPriority);
+
+    taskForm.reset();
+
+    renderTaskItems(currentProject.getProject());
+  } else {
+    console.log("Invalid form");
+  }
+
+  console.log(projects);
 }
 
 function onStart() {
@@ -66,10 +116,13 @@ function onStart() {
     "This is the default project."
   );
 
+  currentProject.setProject(defaultProject);
+
   displayProjectCard(defaultProject);
   renderProjectView(defaultProject);
 }
 
 onStart();
+console.log(currentProject.getProject());
 
-export { deleteProject, displayProject };
+export { deleteProject, displayProject, displayTaskForm, createTask };

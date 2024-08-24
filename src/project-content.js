@@ -1,5 +1,6 @@
 import { taskList } from "./task-list";
 import { addTaskForm } from "./forms";
+import { displayTaskForm } from "./controller";
 
 const displayedProject = (function () {
   let displayedProject;
@@ -21,6 +22,8 @@ function createSVGElement(svgContent, idName) {
   if (idName) {
     svgElement.id = idName;
   }
+
+  svgElement.addEventListener("click", displayTaskForm);
 
   return svgElement;
 }

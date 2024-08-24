@@ -52,4 +52,4 @@ function displayProjectCard(project) {
   viewProject.addEventListener("click", displayProject);
 }
 
-export { displayProjectCard };
+export { displayProjectCard, createSVGElement };

@@ -299,6 +299,7 @@ h6 {
 
 #projectContainer {
   display: flex;
+  gap: 30px;
 }
 
 #taskListContainer {
@@ -417,20 +418,76 @@ h6 {
   cursor: pointer;
 }
 
-/* .priority {
+.taskPriority {
   width: 20px;
   height: 20px;
   border-radius: 50%;
 }
 
-.priority.priorityHigh {
+.taskPriority.priorityHigh {
   background-color: rgb(255, 122, 122);
 }
 
-.priority.priorityMedium {
+.taskPriority.priorityMedium {
   background-color: rgb(255, 202, 96);
 }
 
-.priority.priorityLow {
+.taskPriority.priorityLow {
   background-color: rgb(119, 255, 119);
-} */
+}
+
+.taskItem {
+  background-color: rgb(230, 230, 230);
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.taskItem .taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskItem h2 {
+  font-family: var(--heading-font);
+  color: rgb(27, 27, 27);
+}
+
+.taskItem p {
+  font-family: var(--primary-font);
+  color: rgb(27, 27, 27);
+}
+
+.taskItem .taskFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskItem .taskPriorityContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskItem .taskActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#deleteTask {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  fill: rgb(27, 27, 27);
+}
+
+#deleteTask:hover {
+  fill: rgb(254, 151, 151);
+}

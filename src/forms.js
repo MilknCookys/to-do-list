@@ -1,3 +1,5 @@
+import { createTask } from "./controller";
+
 function toggleAddProjectForm() {
   const addProjectFormContainer = document.getElementById(
     "addProjectFormContainer"
@@ -5,10 +7,14 @@ function toggleAddProjectForm() {
   addProjectFormContainer.classList.toggle("hidden");
 }
 
-// function toggleAddTaskForm() {
-//   const form = document.getElementById("taskForm");
-//   form.classList.toggle("hidden");
-// }
+function toggleAddTaskForm() {
+  if (document.getElementById("taskForm")) {
+    const form = document.getElementById("taskForm");
+    form.classList.toggle("hidden");
+  } else {
+    console.log("Somehow not getting task form");
+  }
+}
 
 function addTaskForm() {
   // Create form element
@@ -99,7 +105,9 @@ function addTaskForm() {
 
   form.appendChild(addButton);
 
+  form.addEventListener("submit", createTask);
+
   return form;
 }
 
-export { toggleAddProjectForm, addTaskForm };
+export { toggleAddProjectForm, addTaskForm, toggleAddTaskForm };
