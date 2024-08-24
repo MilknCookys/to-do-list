@@ -60,6 +60,7 @@ function deleteProject(event) {
         return;
       }
       renderProjectView(projects[i - 1]);
+      renderTaskItems(projects[i - 1]);
     }
   }
 }
