@@ -64,8 +64,8 @@ class Project {
     this.#id = value;
   }
 
-  addTask(title, description, dueDate, priority) {
-    const task = new Task(title, description, dueDate, priority);
+  addTask(title, description, dueDate, priority, project) {
+    const task = new Task(title, description, dueDate, priority, project);
     this.tasks.push(task);
   }
 }

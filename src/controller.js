@@ -11,7 +11,7 @@ addProjectFormButton.addEventListener("click", toggleAddProjectForm);
 const projectForm = document.getElementById("addProjectForm");
 projectForm.addEventListener("submit", createProject);
 
-const currentProject = (function () {
+export const currentProject = (function () {
   let displayedProject;
 
   function setProject(project) {
@@ -54,7 +54,7 @@ function deleteProject(event) {
       element.remove();
       projects.splice(i, 1);
 
-      // Diplsay previous project
+      // Display previous project
 
       if (projects[i - 1] === undefined) {
         return;
@@ -89,17 +89,13 @@ function createTask(event) {
     const taskName = document.getElementById("taskName").value;
     const taskNotes = document.getElementById("taskNotes").value;
     const taskDeadline = document.getElementById("deadline").value;
-
-    console.log(document.querySelector("input[name='priority']:checked").value);
-
     const taskPriority = document.querySelector(
       "input[name='priority']:checked"
     ).value;
 
-    const task = new Task(taskName, taskNotes, taskDeadline, taskPriority);
-    currentProject
-      .getProject()
-      .addTask(taskName, taskNotes, taskDeadline, taskPriority);
+    const project = currentProject.getProject();
+
+    project.addTask(taskName, taskNotes, taskDeadline, taskPriority, project);
 
     taskForm.reset();
 

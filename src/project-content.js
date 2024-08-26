@@ -22,7 +22,6 @@ function createSVGElement(svgContent, idName) {
   if (idName) {
     svgElement.id = idName;
   }
-
   svgElement.addEventListener("click", displayTaskForm);
 
   return svgElement;
